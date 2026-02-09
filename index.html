@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Super Quant Coders | Student Quality Circle</title>
+
+<style>
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@600&family=Poppins:wght@300;400;500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:#f4f6f8;
+    color:#333;
+    font-family:'Poppins', sans-serif;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#0d1b2a;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-family:'Orbitron', sans-serif;
+    font-size:30px;
+    letter-spacing:4px;
+    color:#00b4d8;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{ margin-left:20px; }
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    letter-spacing:1px;
+    position:relative;
+}
+
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:0;
+    bottom:-5px;
+    background:#00b4d8;
+    transition:0.3s;
+}
+
+nav ul li a:hover::after{ width:100%; }
+
+/* HERO */
+.hero{
+    height:90vh;
+    background:linear-gradient(to right,#1b263b,#415a77);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-family:'Montserrat', sans-serif;
+    font-size:52px;
+    letter-spacing:2px;
+    animation:fadeDown 1.5s;
+}
+
+.hero p{
+    margin:18px 0;
+    font-size:18px;
+    font-weight:300;
+    letter-spacing:1px;
+    animation:fadeUp 2s;
+}
+
+.hero button{
+    padding:12px 32px;
+    background:#00b4d8;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    transform:scale(1.1);
+    background:#0096c7;
+}
+
+/* SECTIONS */
+section{
+    padding:70px 40px;
+    text-align:center;
+}
+
+section h2{
+    font-family:'Montserrat', sans-serif;
+    font-size:34px;
+    letter-spacing:2px;
+    margin-bottom:20px;
+    color:#1b263b;
+}
+
+section p{
+    font-size:16px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:35px 25px;
+    width:230px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    cursor:pointer;
+    font-family:'Montserrat', sans-serif;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-12px) scale(1.05);
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    color:#00b4d8;
+}
+
+/* SCROLL EFFECT */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:0.8s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* FOOTER */
+footer{
+    background:#0d1b2a;
+    color:white;
+    padding:18px;
+    letter-spacing:1px;
+    font-size:14px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Super Quant Coders</div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h1>Student Activities</h1>
+    <p>Innovate • Collaborate • Elevate</p>
+    <button onclick="joinClub()">Join SQC</button>
+</section>
+
+<section id="about" class="reveal">
+    <h2>About SQC</h2>
+    <p>SQC is a college technical club focused on innovation, leadership, and quality improvement.</p>
+</section>
+
+<section id="events" class="reveal">
+    <h2>Our Events</h2>
+    <div class="cards">
+        <div class="card" onclick="showEvent('hackathon')">Hackathons</div>
+        <div class="card" onclick="showEvent('workshop')">Workshops</div>
+        <div class="card" onclick="showEvent('techtalk')">Tech Talks</div>
+    </div>
+</section>
+
+<section id="team" class="reveal">
+    <h2>Core Team</h2>
+    <div class="cards">
+        <div class="card">President</div>
+        <div class="card">Vice President</div>
+        <div class="card">Technical Lead</div>
+    </div>
+</section>
+
+<section id="contact" class="reveal">
+    <h2>Contact Us</h2>
+    <p>Email: sqc@college.edu</p>
+    <p>Instagram: @sqc_club</p>
+</section>
+
+<footer>
+    <p>© 2026 SQC | All Rights Reserved</p>
+</footer>
+
+<script>
+function joinClub(){
+    alert("Thanks for your interest in SQC! 🚀");
+}
+
+function showEvent(type){
+    if(type==="hackathon"){
+        alert("Hackathons:\n24–48 hour coding competitions focused on innovation.");
+    } else if(type==="workshop"){
+        alert("Workshops:\nHands-on sessions on modern technologies.");
+    } else {
+        alert("Tech Talks:\nExpert talks by industry professionals.");
+    }
+}
+
+/* SCROLL */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+    reveals.forEach(r=>{
+        if(r.getBoundingClientRect().top < window.innerHeight - 100){
+            r.classList.add("active");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
