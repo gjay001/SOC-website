@@ -2,24 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Super Quant Coders | Student Quality Circle</title>
+<title>SQC | Student Quality Circle</title>
 
 <style>
-/* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Orbitron:wght@600&family=Poppins:wght@300;400;500&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+    --blue-neon:#00b4d8;
+    --blue-electric:#4cc9f0;
+    --blue-soft:#90dbf4;
+    --blue-dark:#1f3b4d;
+    --black:#000;
 }
+
+/* RESET */
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 html{ scroll-behavior:smooth; }
 
 body{
-    background:#f4f6f8;
-    color:#333;
+    background:var(--black);
+    color:var(--blue-electric);
     font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+}
+
+/* PARTICLE CANVAS */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
 }
 
 /* HEADER */
@@ -27,19 +40,20 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 40px;
-    background:#0d1b2a;
-    color:white;
+    padding:16px 40px;
+    border-bottom:1px solid var(--blue-dark);
     position:sticky;
     top:0;
-    z-index:1000;
+    background:rgba(0,0,0,0.9);
+    z-index:10;
 }
 
 .logo{
     font-family:'Orbitron', sans-serif;
-    font-size:30px;
+    font-size:32px;
     letter-spacing:4px;
-    color:#00b4d8;
+    color:var(--blue-neon);
+    text-shadow:0 0 12px rgba(0,180,216,0.7);
 }
 
 nav ul{
@@ -47,12 +61,11 @@ nav ul{
     list-style:none;
 }
 
-nav ul li{ margin-left:20px; }
+nav ul li{ margin-left:25px; }
 
 nav ul li a{
     text-decoration:none;
-    color:white;
-    font-weight:500;
+    color:var(--blue-soft);
     letter-spacing:1px;
     position:relative;
 }
@@ -64,8 +77,12 @@ nav ul li a::after{
     height:2px;
     left:0;
     bottom:-5px;
-    background:#00b4d8;
+    background:linear-gradient(to right,var(--blue-neon),var(--blue-electric));
     transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:var(--blue-neon);
 }
 
 nav ul li a:hover::after{ width:100%; }
@@ -73,8 +90,6 @@ nav ul li a:hover::after{ width:100%; }
 /* HERO */
 .hero{
     height:90vh;
-    background:linear-gradient(to right,#1b263b,#415a77);
-    color:white;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -84,86 +99,88 @@ nav ul li a:hover::after{ width:100%; }
 
 .hero h1{
     font-family:'Montserrat', sans-serif;
-    font-size:52px;
-    letter-spacing:2px;
+    font-size:56px;
+    letter-spacing:3px;
+    background:linear-gradient(to right,var(--blue-neon),var(--blue-electric));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     animation:fadeDown 1.5s;
 }
 
 .hero p{
     margin:18px 0;
     font-size:18px;
-    font-weight:300;
-    letter-spacing:1px;
+    color:var(--blue-soft);
     animation:fadeUp 2s;
 }
 
 .hero button{
-    padding:12px 32px;
-    background:#00b4d8;
-    color:white;
-    border:none;
+    padding:12px 36px;
+    background:transparent;
+    color:var(--blue-neon);
+    border:2px solid var(--blue-neon);
     border-radius:30px;
-    font-size:15px;
-    font-weight:500;
-    letter-spacing:1px;
     cursor:pointer;
     transition:0.3s;
 }
 
 .hero button:hover{
+    background:linear-gradient(to right,var(--blue-neon),var(--blue-electric));
+    color:black;
+    box-shadow:0 0 20px rgba(0,180,216,0.6);
     transform:scale(1.1);
-    background:#0096c7;
 }
 
 /* SECTIONS */
 section{
-    padding:70px 40px;
+    padding:80px 40px;
     text-align:center;
 }
 
 section h2{
     font-family:'Montserrat', sans-serif;
-    font-size:34px;
-    letter-spacing:2px;
-    margin-bottom:20px;
-    color:#1b263b;
+    font-size:36px;
+    margin-bottom:30px;
+    color:var(--blue-neon);
 }
 
 section p{
-    font-size:16px;
-    max-width:700px;
+    max-width:720px;
     margin:auto;
-    line-height:1.8;
+    line-height:1.9;
+    color:var(--blue-soft);
 }
 
 /* CARDS */
 .cards{
     display:flex;
     justify-content:center;
-    gap:25px;
+    gap:30px;
     flex-wrap:wrap;
     margin-top:40px;
 }
 
 .card{
-    background:white;
-    padding:35px 25px;
-    width:230px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    background:rgba(5,5,5,0.9);
+    width:250px;
+    padding:45px 25px;
+    border-radius:16px;
+    border:1px solid var(--blue-dark);
     cursor:pointer;
+    transition:0.35s;
     font-family:'Montserrat', sans-serif;
     letter-spacing:1px;
-    transition:0.3s;
+    color:var(--blue-soft);
 }
 
 .card:hover{
-    transform:translateY(-12px) scale(1.05);
-    box-shadow:0 15px 35px rgba(0,0,0,0.2);
-    color:#00b4d8;
+    transform:translateY(-14px) scale(1.06);
+    border-color:var(--blue-neon);
+    box-shadow:0 0 30px rgba(0,180,216,0.5);
+    color:var(--blue-neon);
 }
 
-/* SCROLL EFFECT */
+/* SCROLL */
 .reveal{
     opacity:0;
     transform:translateY(60px);
@@ -177,11 +194,10 @@ section p{
 
 /* FOOTER */
 footer{
-    background:#0d1b2a;
-    color:white;
-    padding:18px;
-    letter-spacing:1px;
+    border-top:1px solid var(--blue-dark);
+    padding:22px;
     font-size:14px;
+    color:var(--blue-soft);
 }
 
 /* ANIMATIONS */
@@ -199,6 +215,8 @@ footer{
 
 <body>
 
+<canvas id="particles"></canvas>
+
 <header>
     <div class="logo">Super Quant Coders</div>
     <nav>
@@ -206,7 +224,6 @@ footer{
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#team">Team</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -220,7 +237,7 @@ footer{
 
 <section id="about" class="reveal">
     <h2>About SQC</h2>
-    <p>SQC is a college technical club focused on innovation, leadership, and quality improvement.</p>
+    <p>SQC is a student technical club focused on innovation, leadership, and real-world problem solving.</p>
 </section>
 
 <section id="events" class="reveal">
@@ -229,15 +246,6 @@ footer{
         <div class="card" onclick="showEvent('hackathon')">Hackathons</div>
         <div class="card" onclick="showEvent('workshop')">Workshops</div>
         <div class="card" onclick="showEvent('techtalk')">Tech Talks</div>
-    </div>
-</section>
-
-<section id="team" class="reveal">
-    <h2>Core Team</h2>
-    <div class="cards">
-        <div class="card">President</div>
-        <div class="card">Vice President</div>
-        <div class="card">Technical Lead</div>
     </div>
 </section>
 
@@ -252,21 +260,72 @@ footer{
 </footer>
 
 <script>
+/* PARTICLE EFFECT */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particlesArray = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize",()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+class Particle{
+    constructor(){
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
+        this.size = Math.random()*2 + 1;
+        this.speedX = Math.random()*1 - 0.5;
+        this.speedY = Math.random()*1 - 0.5;
+    }
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+    draw(){
+        ctx.fillStyle = "#4cc9f0";
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+    }
+}
+
+function initParticles(){
+    particlesArray = [];
+    for(let i=0;i<120;i++){
+        particlesArray.push(new Particle());
+    }
+}
+
+function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
+
+/* INTERACTIONS */
 function joinClub(){
     alert("Thanks for your interest in SQC! 🚀");
 }
 
 function showEvent(type){
-    if(type==="hackathon"){
-        alert("Hackathons:\n24–48 hour coding competitions focused on innovation.");
-    } else if(type==="workshop"){
-        alert("Workshops:\nHands-on sessions on modern technologies.");
-    } else {
-        alert("Tech Talks:\nExpert talks by industry professionals.");
-    }
+    if(type==="hackathon") alert("Hackathons:\nHigh-intensity coding competitions.");
+    else if(type==="workshop") alert("Workshops:\nHands-on learning sessions.");
+    else alert("Tech Talks:\nExpert knowledge-sharing sessions.");
 }
 
-/* SCROLL */
+/* SCROLL EFFECT */
 const reveals=document.querySelectorAll(".reveal");
 window.addEventListener("scroll",()=>{
     reveals.forEach(r=>{
