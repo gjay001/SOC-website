@@ -1,6 +1,9 @@
 Name-Jay Gupta
+
 Branch-MnC
+
 Achievements-Qualifying SQC Inductions
+
 SQC – Student Quant Coders Website
 
 A modern technical club website built using HTML, CSS, and JavaScript with a dark theme, blue color palette, animations, and particle effects.
